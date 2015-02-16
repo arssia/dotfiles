@@ -1,0 +1,100 @@
+[user]
+        name = Burak Sezer
+        email = bburaksezer@gmail.com
+
+[alias]
+	# List aliases
+        ls = "!git config --get-regexp alias\\. | sed 's/^......//' | sed 's/ /	/'"
+
+        st  = status --short --branch
+        stu = status -uno
+
+        ci = commit -m
+        ce = commit --allow-empty-message -m ''
+
+        # Edit last commit message
+        edit = commit --amend
+
+        # Amend the changes into previos commit
+        amend = commit --amend -C HEAD
+
+        # Dangerous commands
+        #
+        # pr  = pull --rebase
+        # prp = "!git pull --rebase && git push"
+        # pp  = "!git pull --no-edit && git push"
+
+        co = checkout
+        cp = cherry-pick
+        br = branch
+        wc = whatchanged
+
+        df  = diff
+        dfc = diff --cached
+
+        # Show the fetched commits
+        lc   = log ORIG_HEAD.. --stat --no-merges
+
+        lol  = log --graph --decorate --oneline --abbrev-commit
+        lola = log --graph --decorate --oneline --abbrev-commit --all
+
+        # Show commits between two refs. Pass argument like master...feature
+        lr   = log --graph --oneline --left-right --cherry-pick
+
+        # Show commits between master and the current branch
+        lrm  = "!git log --graph --oneline --left-right --cherry-pick master...`git rev-parse HEAD`"
+
+        xxx  = reset --hard
+        prev = reset HEAD^
+
+        assume   = update-index --assume-unchanged
+        unassume = update-index --no-assume-unchanged
+        assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+
+        # Delete local branch
+        db = branch -D
+
+        # Delete local branches that are merged into master
+        dm = "!git branch --merged | grep -v '*' | grep -v 'master$' | xargs -n 1 git branch -d"
+
+        # Delete remote branch
+        dr = push origin --delete
+
+[color]
+        ui = true
+        pager = true
+
+[color "branch"]
+        current = yellow reverse
+        local = yellow
+        remote = green
+
+[color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old = red bold
+        new = green bold
+
+[color "status"]
+        added = green
+        changed = yellow
+        untracked = cyan
+
+[core]
+        editor = vim
+        excludesfile = ~/.gitignore_global
+        autocrlf = false
+        pager = less -FRSX
+        whitespace = fix,trailing-space
+
+[clean]
+	requireForce = false
+
+[merge]
+        summary = true
+
+[push]
+        default = current
+
+[diff]
+        algorithm = patience
