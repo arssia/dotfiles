@@ -118,6 +118,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 assign [class="X-terminal-emulator"] 1:term
 assign [class="Google-chrome-stable"] 2:web
 assign [class="Google-chrome"] 2:web
+assign [class="Firefox"] 2:web
 assign [class="sublime-text-2"] 3:sublime
 assign [class="Nautilus"] 4:files
 assign [class="HipChat"] 5:chat
