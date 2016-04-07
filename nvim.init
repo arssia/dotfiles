@@ -1,0 +1,88 @@
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'rking/ag.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'schickling/vim-bufonly'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go', { 'for': ['go'] }
+"Plug 'tpope/vim-surround'
+"Plug 'benekastah/neomake'
+call plug#end()
+
+
+filetype plugin indent on
+set number
+set relativenumber
+set ruler
+set cursorline
+set autoread
+set laststatus=2
+set nofoldenable
+set hlsearch
+set expandtab
+set encoding=utf8
+set showmatch " show matching braces
+set wrap " line wraping on
+set clipboard=unnamed   " copy to system clipboard, not vim
+set autoread            " watch file change and reload it
+set autoindent          " automatic identation
+set smartindent
+set cursorline        " line highlight
+set incsearch         " search as you type
+set smartcase         " case-sensitive search if any caps
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/bower_components/*
+
+let g:NERDTreeDirArrows=0
+" Don't display these kinds of files
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '\.gem$',  '\.rbc$', '\~$']
+map <F7> :NERDTreeToggle<CR>
+
+" Ctrlp settings
+let g:ctrlp_working_path_mode = 'ra'
+
+" Vim-airline Settings
+let g:airline_powerline_fonts = 1
+let g:Powerline_symbols = 'fancy'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_theme='base16_monokai'
+let g:airline#extensions#hunks#enabled=1
+let g:airline#extensions#tabline#enabled =1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#branch#enabled=1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:molokai_original = 1
+
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+"##############################################################################
+" No arrow keys, sorry
+"##############################################################################
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+"##############################################################################
+" numbers
+"##############################################################################
+let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
+nnoremap <F3> :NumbersToggle<CR>
+nnoremap <F4> :NumbersOnOff<CR>
