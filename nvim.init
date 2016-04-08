@@ -1,18 +1,14 @@
 call plug#begin()
-Plug 'tpope/vim-sensible'
 Plug 'rking/ag.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'schickling/vim-bufonly'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'for': ['go'] }
-"Plug 'tpope/vim-surround'
-"Plug 'benekastah/neomake'
 call plug#end()
 
 
@@ -38,14 +34,6 @@ set incsearch         " search as you type
 set smartcase         " case-sensitive search if any caps
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/bower_components/*
 
-let g:NERDTreeDirArrows=0
-" Don't display these kinds of files
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '\.gem$',  '\.rbc$', '\~$']
-map <F7> :NERDTreeToggle<CR>
-
-" Ctrlp settings
-let g:ctrlp_working_path_mode = 'ra'
-
 " Vim-airline Settings
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
@@ -60,7 +48,6 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-let g:molokai_original = 1
 
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
@@ -80,9 +67,3 @@ noremap <Right> <NOP>
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-"##############################################################################
-" numbers
-"##############################################################################
-let g:numbers_exclude = ['tagbar', 'gundo', 'minibufexpl', 'nerdtree']
-nnoremap <F3> :NumbersToggle<CR>
-nnoremap <F4> :NumbersOnOff<CR>
