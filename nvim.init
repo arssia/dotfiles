@@ -6,7 +6,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'for': ['go'] }
 call plug#end()
@@ -14,7 +13,7 @@ call plug#end()
 " color theme
 set background=dark
 let base16colorspace=256
-colorscheme base16-google
+colorscheme base16-bright
 
 filetype plugin indent on
 set number
@@ -39,6 +38,7 @@ set smartcase         " case-sensitive search if any caps
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/bower_components/*
 
 " Vim-airline Settings
+let g:airline_theme = 'term'
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 let g:airline_left_sep=''
@@ -71,9 +71,4 @@ nnoremap <Leader>h :History<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 
-" Disable arrow keys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
 
