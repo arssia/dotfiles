@@ -38,6 +38,7 @@ set cursorline        " line highlight
 set incsearch         " search as you type
 set smartcase         " case-sensitive search if any caps
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*,*/bower_components/*
+set completeopt-=preview
 
 " Vim-airline Settings
 let g:airline_theme = 'base16'
@@ -53,9 +54,13 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
+au FileType go nmap <leader>rt <Plug>(go-run-tab)
+au FileType go nmap <Leader>rs <Plug>(go-run-split)
+au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
+let g:go_term_mode = "split"
+let g:go_term_enabled = 1
 
 " shortcuts
-
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 nnoremap <Leader>f :Files<CR>
@@ -73,6 +78,4 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
-
-set completeopt-=preview
 
