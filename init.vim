@@ -14,10 +14,12 @@ call plug#end()
 set background=light
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
+  set termguicolors
   source ~/.vimrc_background
 endif
 
 filetype plugin indent on
+set updatetime=100
 set number
 set relativenumber
 set ruler
@@ -48,17 +50,14 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 
 let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+"let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-
-au FileType go nmap <leader>rt <Plug>(go-run-tab)
-au FileType go nmap <Leader>rs <Plug>(go-run-split)
-au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
-let g:go_term_mode = "split"
-let g:go_term_enabled = 1
 
 " shortcuts
 " <Ctrl-l> redraws the screen and removes any search highlighting.
@@ -68,6 +67,9 @@ nnoremap <Leader>g :GitFiles<CR>
 nnoremap <Leader>h :History<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>df :GoDef<CR>
+nnoremap <Leader>ds :GoDescribe<CR>
+nnoremap <Leader>dc :GoDoc<CR>
 
 function! s:fzf_statusline()
   " Override statusline as you like
@@ -76,6 +78,6 @@ function! s:fzf_statusline()
   highlight fzf3 ctermfg=237 ctermbg=251
   setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
 endfunction
-
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
 
