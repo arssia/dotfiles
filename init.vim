@@ -8,6 +8,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go', { 'for': ['go'] }
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 call plug#end()
 
 " color theme
@@ -19,6 +21,7 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 filetype plugin indent on
+set colorcolumn=80
 set updatetime=100
 set number
 set relativenumber
@@ -49,6 +52,8 @@ let g:Powerline_symbols = 'fancy'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
+
+let g:go_def_mode = 'godef'
 let g:go_fmt_command = "goimports"
 let g:go_highlight_types = 1
 "let g:go_highlight_fields = 1
@@ -58,6 +63,17 @@ let g:go_highlight_structs = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+
+" neocomplete like
+set completeopt+=noinsert
+" deoplete.nvim recommend
+set completeopt+=noselect
+
+" Run deoplete.nvim automatically
+let g:deoplete#enable_at_startup = 1
+" deoplete-go settings
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " shortcuts
 " <Ctrl-l> redraws the screen and removes any search highlighting.
@@ -70,6 +86,7 @@ nnoremap <Leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <Leader>df :GoDef<CR>
 nnoremap <Leader>ds :GoDescribe<CR>
 nnoremap <Leader>dc :GoDoc<CR>
+nnoremap <Leader>re :GoRename<CR>
 
 function! s:fzf_statusline()
   " Override statusline as you like
